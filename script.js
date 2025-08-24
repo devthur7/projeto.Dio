@@ -1,24 +1,32 @@
-function nivelPlay() {
-    let saldoVitoria = Number(prompt("Quantas vitorias ?"));
-    let nivel = "";
+class Heroi {
+  constructor(nome, idade, tipo) {
+    this.nome = nome;
+    this.idade = idade;
+    this.tipo = tipo;
+  }
 
-    if (saldoVitoria < 10) {
-        nivel = "Ferro";
-    } else if (saldoVitoria >= 11 && saldoVitoria <= 20) {
-        nivel = "Bronze";
-    } else if (saldoVitoria >= 21 && saldoVitoria <= 50) {
-        nivel = "Prata";
-    } else if (saldoVitoria >= 51 && saldoVitoria <= 80) {
-        nivel = "Ouro";
-    } else if (saldoVitoria >= 81 && saldoVitoria <= 90) {
-        nivel = "Diamante";
-    } else if (saldoVitoria >= 91 && saldoVitoria <= 100) {
-        nivel = "Lendário";
+  atacar() {
+    if (this.tipo === "mago") {
+      return `${this.nome} atacou usando magia`;
+    } else if (this.tipo === "guerreiro") {
+      return `${this.nome} usou espada`;
+    } else if (this.tipo === "monge") {
+      return `${this.nome} usou artes marciais`;
+    } else if (this.tipo === "ninja") {
+      return `${this.nome} usou shuriken`;
     } else {
-        nivel = "Radiante";
+      return `${this.nome} não tem ataque definido`;
     }
-
-    console.log(`O herói tem um saldo de ${saldoVitoria} vitórias e está no nível ${nivel}`);
+  }
 }
 
-nivelPlay();
+// Perguntar ao usuário
+let nome = prompt("Qual o nick do herói?");
+let idade = prompt("Qual a idade do herói?");
+let classe = prompt("Qual a classe do herói? (mago, guerreiro, monge, ninja)");
+
+// Criar o herói
+let heroi = new Heroi(nome, idade, classe);
+
+// Mostrar ação
+console.log(heroi.atacar());
